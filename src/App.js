@@ -13,6 +13,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      users: [{userName: "cujo", userId: 0},{userName: "V", userId: 1}],
+      userId: undefined,
       posts: [],
       postId: undefined,
     };
@@ -28,6 +30,30 @@ class App extends React.Component {
 
     this.setState({ posts: JSON.parse(listContents) || [], postId: postValue });
   }
+
+  
+  componentDidMountUser() {
+    const userContents = localStorage.getItem("users");
+    let userValue = 0;
+    if (userContents) {
+      userValue =
+        JSON.parse(userContents)[JSON.parse(userContents).length - 1].userid;
+    }
+
+    this.setState({ user: JSON.parse(userContents) || [], userId: userValue });
+  }
+
+  
+  updateUserItems(userId, userName, userPhoto) {
+    const userItem = { userId, userName, userPhoto };
+    this.setState(
+      (state) => ({
+        users: state.users.concat(userItem),
+      }),
+      () => localStorage.setItem("user", JSON.stringify(this.state.users))
+    );
+  }
+
 
   updateListItems(postid, id, text, img, likes, fails, facePalms) {
     const postItem = { postid, id, text, img, likes, fails, facePalms };
@@ -122,6 +148,7 @@ class App extends React.Component {
             </Route>
             <Route exact path="/">
               <View
+                users={this.state.users}
                 posts={this.state.posts}
                 likeaction={(id) => this.addLike(id)}
                 failsaction={(id) => this.addFails(id)}

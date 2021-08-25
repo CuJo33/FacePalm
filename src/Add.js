@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
+import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
@@ -8,6 +9,7 @@ class Add extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentUser: "Choose User",
       postId: 0,
       id: "",
       text: "",
@@ -52,7 +54,7 @@ class Add extends React.Component {
     console.log(newId);
     this.props.onsubmit(
       newId,
-      this.state.id,
+      this.state.currentUser,
       this.state.text,
       this.state.img,
       0,
@@ -78,14 +80,22 @@ class Add extends React.Component {
     return (
       <>
         <Form onSubmit={(e) => this.submitHandler(e)}>
+          
           <Form.Group controlId="userID">
-            <Form.Label>User ID</Form.Label>
-            <Form.Control
-              name="id"
-              type="text"
-              value={this.state.id}
-              onChange={(e) => this.handleChange(e)}
-            />
+            <Form.Label>User</Form.Label>
+            <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              {this.state.currentUser}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu onClick={(e) => this.setState({currentUser: e.target.innerHTML})}>
+              {this.props.users.map((user) => {
+                return (
+                  <Dropdown.Item key={user.userId}>{user.userName}</Dropdown.Item>
+                )
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
           </Form.Group>
 
           <Form.Group controlId="text">

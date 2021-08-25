@@ -32,10 +32,10 @@ class Profile extends React.Component {
     toastr.clear();
   }
 
-  componentDidMount() {
-    console.log(this.props.lastid);
+  componentDidMountUser() {
+    console.log(this.users.lastid);
     this.setState({
-      userId: this.props.lastid,
+      userId: this.users.lastid,
     });
   }
 
@@ -77,7 +77,7 @@ class Profile extends React.Component {
           </Form.Group>
 
           <Form.Group controlId="userPhoto">
-            <Form.Label>Profile Photo Image Address</Form.Label>
+            <Form.Label>Profile Photo</Form.Label>
             <Form.Control
               name="userPhoto"
               type="text"
@@ -88,7 +88,7 @@ class Profile extends React.Component {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            Add Post
+            Add User
           </Button>
         </Form>
       </>

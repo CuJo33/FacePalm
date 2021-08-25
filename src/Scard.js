@@ -3,14 +3,15 @@ import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Likes from "./Likes";
 import Fails from "./Fails";
+import Row from "react-bootstrap/Row"
 import FacePalms from "./FacePalms";
 
 class Scard extends React.Component {
   render() {
     return (
-      <>
+      <div>
         <Card className="mx-auto text-center mt-2">
-          <Card.Header as="h5">@{this.props.id}</Card.Header>
+          <Card.Header as="h5">{this.props.id}</Card.Header>
           <Image
             fluid
             className="mx-auto"
@@ -19,6 +20,7 @@ class Scard extends React.Component {
           />
           <Card.Body>
             <Card.Text>{this.props.text}</Card.Text>
+            <Row>
             <Likes
               no={this.props.likes}
               likeaction={this.props.likeaction}
@@ -34,9 +36,10 @@ class Scard extends React.Component {
               facePalmsaction={this.props.facePalmsaction}
               postId={this.props.postId}
             />
+            </Row>
           </Card.Body>
         </Card>
-      </>
+      </div>
     );
   }
 }
