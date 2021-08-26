@@ -1,15 +1,21 @@
 import React from "react";
-import "./App.css";
 import Scard from "./Scard";
 
 class View extends React.Component {
+  constructor(props) {
+    super(props);}
+
   buildPosts() {
-    return this.props.posts.map((current, i) => (
+    return this.props.posts.map((current, i, a) => {
+      console.log(current)
+      return (
       <Scard
         key={i}
         postId={current.postid}
-        id={current.id}
+        id={current.userName}
         img={current.img}
+        videoURL={current.videoURL}
+        userPhoto={current.userPhoto}
         text={current.text}
         likes={current.likes}
         likeaction={this.props.likeaction}
@@ -18,7 +24,7 @@ class View extends React.Component {
         facePalms={current.facePalms}
         facePalmsaction={this.props.facePalmsaction}
       />
-    ));
+    )});
   }
 
   render() {

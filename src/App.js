@@ -13,35 +13,36 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [{userName: "cujo", userId: 0},{userName: "V", userId: 1}],
+      users: [{userName: "test", userPhoto: "testUrl", userId: "1"}, {userName: "test2", userPhoto: "testUrl2", userId: "2"}],
       userId: undefined,
       posts: [],
       postId: undefined,
     };
   }
 
-  componentDidMount() {
-    const listContents = localStorage.getItem("posts");
-    let postValue = 0;
-    if (listContents) {
-      postValue =
-        JSON.parse(listContents)[JSON.parse(listContents).length - 1].postid;
-    }
+  // componentDidMount() {
+  //   // localStorage.removeItem("posts")
+  //   const listContents = localStorage.getItem("posts");
+  //   let postValue = 0;
+  //   if (listContents) {
+  //     postValue =
+  //       JSON.parse(listContents)[JSON.parse(listContents).length - 1].postid;
+  //   }
 
-    this.setState({ posts: JSON.parse(listContents) || [], postId: postValue });
-  }
+  //   this.setState({ posts: JSON.parse(listContents) || [], postId: postValue });
+  // }
 
   
-  componentDidMountUser() {
-    const userContents = localStorage.getItem("users");
-    let userValue = 0;
-    if (userContents) {
-      userValue =
-        JSON.parse(userContents)[JSON.parse(userContents).length - 1].userid;
-    }
+  // componentDidMountUser() {
+  //   const userContents = localStorage.getItem("users");
+  //   let userValue = 0;
+  //   if (userContents) {
+  //     userValue =
+  //       JSON.parse(userContents)[JSON.parse(userContents).length - 1].userid;
+  //   }
 
-    this.setState({ user: JSON.parse(userContents) || [], userId: userValue });
-  }
+  //   this.setState({ user: JSON.parse(userContents) || [], userId: userValue });
+  // }
 
   
   updateUserItems(userId, userName, userPhoto) {
@@ -55,8 +56,8 @@ class App extends React.Component {
   }
 
 
-  updateListItems(postid, id, text, img, likes, fails, facePalms) {
-    const postItem = { postid, id, text, img, likes, fails, facePalms };
+  updateListItems(postItem) {
+    console.log(postItem)
     this.setState(
       (state) => ({
         posts: state.posts.concat(postItem),
@@ -120,16 +121,19 @@ class App extends React.Component {
         </Navbar>
 
         <Container>
+          <div className="page">
           <Switch>
             <Route path="/add">
               <Add
+                posts={this.state.posts}
                 users={this.state.users}
-                onsubmit={(postid, id, text, img, likes, fails, facePalms) =>
+                onsubmit={(postid, id, text, img, videoURL, likes, fails, facePalms) =>
                   this.updateListItems(
                     postid,
                     id,
                     text,
                     img,
+                    videoURL,
                     likes,
                     fails,
                     facePalms
@@ -157,6 +161,7 @@ class App extends React.Component {
             </Route>
             <Route path="/">Error: 404 not found</Route>
           </Switch>
+          </div>  
         </Container>
       </Router>
     );
