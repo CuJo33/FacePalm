@@ -145,7 +145,6 @@ setRadioValue(radioValPass) {
               value={this.state.text}
               placeholder="text"
               onChange={(e) => this.handleChange(e)}
-              width="50%"
             />
           </Form.Group>      
 
