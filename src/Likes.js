@@ -5,7 +5,6 @@ import LikeIcon from "./like.png";
 
 class Likes extends React.Component {
   clickHandler(event) {
-    console.log(this.props.postId);
     this.props.likeaction(this.props.postId);
   }
 

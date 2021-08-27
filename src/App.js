@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [{userName: "test", userPhoto: "testUrl", userId: "1"}, {userName: "test2", userPhoto: "testUrl2", userId: "2"}],
+      users: [],
       userId: undefined,
       posts: [],
       postId: undefined,
@@ -32,7 +32,6 @@ class App extends React.Component {
   //   this.setState({ posts: JSON.parse(listContents) || [], postId: postValue });
   // }
 
-  
   // componentDidMountUser() {
   //   const userContents = localStorage.getItem("users");
   //   let userValue = 0;
@@ -44,7 +43,6 @@ class App extends React.Component {
   //   this.setState({ user: JSON.parse(userContents) || [], userId: userValue });
   // }
 
-  
   updateUserItems(userId, userName, userPhoto) {
     const userItem = { userId, userName, userPhoto };
     this.setState(
@@ -55,9 +53,7 @@ class App extends React.Component {
     );
   }
 
-
   updateListItems(postItem) {
-    console.log(postItem)
     this.setState(
       (state) => ({
         posts: state.posts.concat(postItem),
@@ -70,7 +66,7 @@ class App extends React.Component {
     this.setState(
       (state) => ({
         posts: state.posts.map((post) =>
-          post.postid === id ? { ...post, likes: post.likes + 1 } : post
+          post.postId === id ? { ...post, likes: post.likes + 1 } : post
         ),
       }),
       () => localStorage.setItem("posts", JSON.stringify(this.state.posts))
@@ -81,7 +77,7 @@ class App extends React.Component {
     this.setState(
       (state) => ({
         posts: state.posts.map((post) =>
-          post.postid === id ? { ...post, fails: post.fails + 1 } : post
+          post.postId === id ? { ...post, fails: post.fails + 1 } : post
         ),
       }),
       () => localStorage.setItem("posts", JSON.stringify(this.state.posts))
@@ -92,7 +88,7 @@ class App extends React.Component {
     this.setState(
       (state) => ({
         posts: state.posts.map((post) =>
-          post.postid === id ? { ...post, facePalms: post.facePalms + 1 } : post
+          post.postId === id ? { ...post, facePalms: post.facePalms + 1 } : post
         ),
       }),
       () => localStorage.setItem("posts", JSON.stringify(this.state.posts))
@@ -122,13 +118,12 @@ class App extends React.Component {
 
         <Container>
           <div className="page">
-          <Switch>
-            <Route path="/add">
-              <Add
-                posts={this.state.posts}
-                users={this.state.users}
-                onsubmit={(postid, id, text, img, videoURL, likes, fails, facePalms) =>
-                  this.updateListItems(
+            <Switch>
+              <Route path="/add">
+                <Add
+                  posts={this.state.posts}
+                  users={this.state.users}
+                  onsubmit={(
                     postid,
                     id,
                     text,
@@ -137,31 +132,41 @@ class App extends React.Component {
                     likes,
                     fails,
                     facePalms
-                  )
-                }
-                lastid={this.state.postId}
-              />
-            </Route>
-            <Route path="/Profile">
-              <Profile
-                onsubmit={(userId, userName, userPhoto) =>
-                  this.updateUserItems(userId, userName, userPhoto)
-                }
-                lastid={this.state.userId}
-              />
-            </Route>
-            <Route exact path="/">
-              <View
-                users={this.state.users}
-                posts={this.state.posts}
-                likeaction={(id) => this.addLike(id)}
-                failsaction={(id) => this.addFails(id)}
-                facePalmsaction={(id) => this.addFacePalms(id)}
-              />
-            </Route>
-            <Route path="/">Error: 404 not found</Route>
-          </Switch>
-          </div>  
+                  ) =>
+                    this.updateListItems(
+                      postid,
+                      id,
+                      text,
+                      img,
+                      videoURL,
+                      likes,
+                      fails,
+                      facePalms
+                    )
+                  }
+                  lastid={this.state.postId}
+                />
+              </Route>
+              <Route path="/Profile">
+                <Profile
+                  onsubmit={(userId, userName, userPhoto) =>
+                    this.updateUserItems(userId, userName, userPhoto)
+                  }
+                  lastid={this.state.userId}
+                />
+              </Route>
+              <Route exact path="/">
+                <View
+                  users={this.state.users}
+                  posts={this.state.posts}
+                  likeaction={(id) => this.addLike(id)}
+                  failsaction={(id) => this.addFails(id)}
+                  facePalmsaction={(id) => this.addFacePalms(id)}
+                />
+              </Route>
+              <Route path="/">Error: 404 not found</Route>
+            </Switch>
+          </div>
         </Container>
       </Router>
     );
