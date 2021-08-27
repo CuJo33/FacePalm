@@ -21,7 +21,7 @@ class FacePalms extends React.Component {
                   fluid
                   className="mx-auto"
                   src={FacePalmsIcon}
-                  width="25px"
+                  width="50px"
                   alt="FacePalms logo"
                 />
               </td>

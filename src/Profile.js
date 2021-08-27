@@ -61,7 +61,7 @@ class Profile extends React.Component {
     return (
       <>
         <Card bg="light" className="mx-auto mt-2">
-          <Form onSubmit={(e) => this.submitHandler(e)}>
+          <Form autocomplete="off" onSubmit={(e) => this.submitHandler(e)}>
             <Form.Group controlId="userName">
               <Form.Label>User Name</Form.Label>
               <Form.Control

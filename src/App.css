@@ -1,19 +1,12 @@
 /* // $pagebackground: #cccccc;
 // $cardbackground: lightblue; */
 
+body {
+  background-image: url("plate_background.jpg");
+  background-color: #cccccc;
+  /* background-size: cover; */
+}
 
- body  {
-   background-image: url("plate_background.jpg");
-   background-color: #cccccc;
-   /* background-size: cover; */
-  }
-  
 #att {
   font-size: 0.5em;
 }
-
-
-
-
-
-

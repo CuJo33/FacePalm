@@ -20,7 +20,7 @@ class Likes extends React.Component {
                   fluid
                   className="mx-auto"
                   src={LikeIcon}
-                  width="25px"
+                  width="50px"
                   alt="like logo"
                 />
               </td>

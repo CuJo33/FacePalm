@@ -116,7 +116,7 @@ class Add extends React.Component {
     return (
       <>
         <Card bg="light" className="mx-auto mt-2">
-          <Form onSubmit={(e) => this.submitHandler(e)}>
+          <Form autocomplete="off" onSubmit={(e) => this.submitHandler(e)}>
             <Form.Group controlId="userID">
               <Form.Label>User</Form.Label>
               <Dropdown>

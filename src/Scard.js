@@ -6,6 +6,7 @@ import Fails from "./Fails";
 import Row from "react-bootstrap/Row";
 import FacePalms from "./FacePalms";
 import Col from "react-bootstrap/Col";
+import "./App.css";
 
 class Scard extends React.Component {
   constructor(props) {
@@ -41,35 +42,31 @@ class Scard extends React.Component {
             <Col id="test">
               <Card.Body>
                 <Card.Text>{this.props.text}</Card.Text>
-                <Row>
-                  <Col>
-                    <Likes
-                      no={this.props.likes}
-                      likeaction={() =>
-                        this.props.likeaction(this.props.postId)
-                      }
-                      postId={this.props.postId}
-                    />
-                  </Col>
-                  <Col>
-                    <Fails
-                      no={this.props.fails}
-                      failsaction={() =>
-                        this.props.failsaction(this.props.postId)
-                      }
-                      postId={this.props.postId}
-                    />
-                  </Col>
-                  <Col>
-                    <FacePalms
-                      no={this.props.facePalms}
-                      facePalmsaction={() =>
-                        this.props.facePalmsaction(this.props.postId)
-                      }
-                      postId={this.props.postId}
-                    />
-                  </Col>
-                </Row>
+                {/* <Row>
+                  <Col width="100"> */}
+                <Likes
+                  no={this.props.likes}
+                  likeaction={() => this.props.likeaction(this.props.postId)}
+                  postId={this.props.postId}
+                />
+                {/* </Col>
+                  <Col width="100"> */}
+                <Fails
+                  no={this.props.fails}
+                  failsaction={() => this.props.failsaction(this.props.postId)}
+                  postId={this.props.postId}
+                />
+                {/* </Col>
+                  <Col width="100"> */}
+                <FacePalms
+                  no={this.props.facePalms}
+                  facePalmsaction={() =>
+                    this.props.facePalmsaction(this.props.postId)
+                  }
+                  postId={this.props.postId}
+                />
+                {/* </Col>
+                </Row> */}
               </Card.Body>
             </Col>
             <Col>
@@ -81,7 +78,7 @@ class Scard extends React.Component {
                   alt={this.props.alt}
                 />
               ) : (
-                <div className="video-section auto-resizable-iframe">
+                <div className="video-section">
                   <iframe
                     width="853"
                     height="480"

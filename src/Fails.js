@@ -21,7 +21,7 @@ class Fails extends React.Component {
                   fluid
                   className="mx-auto"
                   src={FailsIcon}
-                  width="25px"
+                  width="50px"
                   alt="Fails logo"
                 />
               </td>
