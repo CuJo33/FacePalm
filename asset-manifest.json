@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/FacePalm/static/css/main.c3780ddd.chunk.css",
+    "main.js": "/FacePalm/static/js/main.e3176777.chunk.js",
+    "main.js.map": "/FacePalm/static/js/main.e3176777.chunk.js.map",
+    "runtime-main.js": "/FacePalm/static/js/runtime-main.ec3b79b7.js",
+    "runtime-main.js.map": "/FacePalm/static/js/runtime-main.ec3b79b7.js.map",
+    "static/css/2.0740d453.chunk.css": "/FacePalm/static/css/2.0740d453.chunk.css",
+    "static/js/2.0c175703.chunk.js": "/FacePalm/static/js/2.0c175703.chunk.js",
+    "static/js/2.0c175703.chunk.js.map": "/FacePalm/static/js/2.0c175703.chunk.js.map",
+    "index.html": "/FacePalm/index.html",
+    "precache-manifest.b9d97f975a102328f7a08d4d034c7a02.js": "/FacePalm/precache-manifest.b9d97f975a102328f7a08d4d034c7a02.js",
+    "service-worker.js": "/FacePalm/service-worker.js",
+    "static/css/2.0740d453.chunk.css.map": "/FacePalm/static/css/2.0740d453.chunk.css.map",
+    "static/css/main.c3780ddd.chunk.css.map": "/FacePalm/static/css/main.c3780ddd.chunk.css.map",
+    "static/js/2.0c175703.chunk.js.LICENSE.txt": "/FacePalm/static/js/2.0c175703.chunk.js.LICENSE.txt",
+    "static/media/facePalm.png": "/FacePalm/static/media/facePalm.27bc5802.png",
+    "static/media/fail.jpg": "/FacePalm/static/media/fail.8ff3ad95.jpg",
+    "static/media/like.png": "/FacePalm/static/media/like.e0756cdb.png",
+    "static/media/App.css": "/FacePalm/static/media/plate_background.f202b5ca.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ec3b79b7.js",
+    "static/css/2.0740d453.chunk.css",
+    "static/js/2.0c175703.chunk.js",
+    "static/css/main.c3780ddd.chunk.css",
+    "static/js/main.e3176777.chunk.js"
+  ]
+}
